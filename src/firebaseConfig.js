@@ -1,32 +1,29 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getDatabase, ref, set,get ,update,remove } from "firebase/database";
-import { getAuth, signInWithPhoneNumber, signInWithCredential, PhoneAuthProvider } from "firebase/auth";
+import { getDatabase, ref, set } from "firebase/database";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBOXA33MUCKHIvM7yE3eNXlhYHt6RFuZwA",
-  authDomain: "jarvissystems-62e08.firebaseapp.com",
-  projectId: "jarvissystems-62e08",
-  storageBucket: "jarvissystems-62e08.appspot.com",
-  messagingSenderId: "378333214098",
-  appId: "1:378333214098:web:918da522c2271269cebd4b"
+  apiKey: "AIzaSyAiJf1SDTPpfRHr4NwckDu_1ImNpju6y14",
+  authDomain: "jarvis-systems-commons.firebaseapp.com",
+  databaseURL: "https://jarvis-systems-commons-default-rtdb.firebaseio.com",
+  projectId: "jarvis-systems-commons",
+  storageBucket: "jarvis-systems-commons.appspot.com",
+  messagingSenderId: "383480447879",
+  appId: "1:383480447879:web:45baeaa9517cbb97088922"
 };
 
-
 export const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
-
-export function register(phoneNumber, username, email,password){
+export function register(phoneNumber, username, email,password,usertype){
     const dbb = getDatabase();
-    set(ref(dbb, 'users/' + phoneNumber), {
+    set(ref(dbb, 'CafeApplication/users/' + phoneNumber), {
       username: username,
       email: email,
       password:password,
-      phoneNumber:phoneNumber
+      phoneNumber:phoneNumber,
+      usertype:usertype
     });
-    alert("Registration Successfull")
 }
 
 
