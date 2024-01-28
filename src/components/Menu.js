@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { getDatabase, ref as databaseRef, onValue } from 'firebase/database';
+import { push } from 'firebase/database';
+import { toast, ToastContainer } from 'react-toastify';
+import OrderHistory from './OrderHistory';
 
 function Menu({ onAddToCart }) {
   const [products, setProducts] = useState([]);
@@ -53,12 +56,31 @@ function Menu({ onAddToCart }) {
     setCart(updatedCart);
   };
 
-  const handleCheckout = () => {
-    // Handle checkout logic based on your requirements
-    // You can send the cart data and customer details to your backend for further processing
-    // For simplicity, we'll just log the data to the console here
+  const handleCheckout = async () => {
+
+    const db = getDatabase();
+
+    const newFeedback = {
+      cart,
+      customerDetails,
+      timestamp: new Date().toISOString(),
+      status:"Placed"
+    };
+   
+    
     console.log('Checkout:', { cart, customerDetails });
-    // You may want to reset the cart and customer details after a successful checkout
+
+    await push(databaseRef(db, 'CafeApplication/orders'), newFeedback);
+
+    toast.success('Order Placed!', {
+    position: 'top-right',
+    autoClose: 3000, 
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+  });
+    
     setCart([]);
     setCustomerDetails({
       name: '',
@@ -221,6 +243,8 @@ function Menu({ onAddToCart }) {
           </div>
         )}
       </div>
+
+  
     </>
   );
 }

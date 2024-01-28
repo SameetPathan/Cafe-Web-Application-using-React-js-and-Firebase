@@ -17,10 +17,13 @@ Admin Dashboard
       
       <div className="row justify-content-center">
         <div className="col-md-3 mb-3">
-          <button className="btn btn-primary btn-block">Orders</button>
+        <Link to="/admin-orders"  className="btn btn-primary btn-block my-2 my-sm-0 mr-2">
+        Orders
+                </Link>
+         
         </div>
         <div className="col-md-3 mb-3">
-        <Link to="/admin-products"  className="btn btn-success btn-block my-2 my-sm-0 mr-2">
+        <Link to="/admin-products"  className="btn btn-info btn-block my-2 my-sm-0 mr-2">
         Products
                 </Link>
           
@@ -32,7 +35,10 @@ Admin Dashboard
           
         </div>
         <div className="col-md-3 mb-3">
-          <button className="btn btn-warning btn-block">Feedbacks</button>
+        <Link to="/admin-feedback-view"  className="btn btn-warning btn-block my-2 my-sm-0 mr-2">
+        Feedbacks
+                </Link>
+         
         </div>
       </div>
     </div>

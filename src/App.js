@@ -12,6 +12,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import CustomerHome from './components/CustomerHome';
 import Menu from './components/Menu';
+import GiveFeedback from './components/CustomerFeedback';
+import OrderHistory from './components/OrderHistory';
+import FeedbackViewer from './components/FeedbackViewer ';
+import AllOrder from './components/AllOrder';
 
 function App() {
 
@@ -47,10 +51,14 @@ function App() {
         <Route exact path="/" element={ <AdminHome></AdminHome>} />
         <Route exact path="/admin-products" element={ <ProductManagement></ProductManagement>} />
         <Route exact path="/admin-billings" element={<Billing></Billing>} />
+        <Route exact path="/admin-feedback-view" element={<FeedbackViewer></FeedbackViewer>} />
+        <Route exact path="/admin-orders" element={<AllOrder></AllOrder>} />
         </>:
         <>
         <Route exact path="/" element={<CustomerHome></CustomerHome>} />
         <Route exact path="/customer-menu" element={<Menu></Menu>} />
+        <Route exact path="/customer-feedback" element={<GiveFeedback></GiveFeedback>} />
+        <Route exact path="/customer-order-history" element={<OrderHistory phoneNumber = {currentAccount}></OrderHistory>} />
         </>}
         <Route exact path="/" element={<BackgroundC></BackgroundC>} />
         </>
