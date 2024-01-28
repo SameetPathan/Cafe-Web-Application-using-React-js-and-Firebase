@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, set ,} from "firebase/database";
 
 
 const firebaseConfig = {
@@ -24,6 +24,7 @@ export function register(phoneNumber, username, email,password,usertype){
       phoneNumber:phoneNumber,
       usertype:usertype
     });
+
 }
 
 
