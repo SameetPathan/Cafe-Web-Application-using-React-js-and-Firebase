@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getDatabase, ref as databaseRef, onValue, update } from 'firebase/database';
+import Loader from './Loader';
 
 const AllOrder = () => {
   const [orders, setOrders] = useState([]);
@@ -38,10 +39,11 @@ const AllOrder = () => {
 
   return (
     <>
+    <Loader></Loader>
     <div class="alert alert-secondary" role="alert">
         Orders
       </div>
-    <div className="container mt-5">
+    <div className="container mt-5" style={{marginBottom:"30%"}}>
      
       {errorMessage && (
         <div className="alert alert-danger" role="alert">

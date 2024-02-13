@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getDatabase, ref as databaseRef, push, update, remove,onValue } from 'firebase/database';
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
+import Loader from './Loader';
 
 
 const ProductManagement = () => {
@@ -95,10 +96,11 @@ const handleAddProduct = async () => {
 
   return (
     <>
+    <Loader></Loader>
     <div class="alert alert-secondary" role="alert">
     Product Management
 </div>
-    <div className="container mt-5">
+    <div className="container mt-5" style={{marginBottom:"30%"}}>
       
       <div className="row">
         <div className="col-md-6">

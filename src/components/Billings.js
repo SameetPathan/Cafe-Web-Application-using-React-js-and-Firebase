@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getDatabase, ref as databaseRef, push,onValue } from 'firebase/database';
 import { toast} from 'react-toastify';
+import { FaClock, FaCalendarAlt } from 'react-icons/fa';
 
 const Billing = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -11,6 +12,7 @@ const Billing = () => {
   const [customerName, setCustomerName] = useState('');
   const [customerNumber, setCustomerNumber] = useState('');
   const [billingSuccess, setBillingSuccess] = useState(false);
+  const [currentDateTime, setCurrentDateTime] = useState(new Date());
 
   const db = getDatabase();
 
@@ -74,15 +76,26 @@ const Billing = () => {
   });
     setTimeout(() => {
       setBillingSuccess(false);
-    }, 3000);
+    }, 9000);
   };
+
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentDateTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+
 
   return (
     <>
     <div class="alert alert-secondary"  role="alert">
     Billing Management
 </div>
-    <div className="container mt-5" style={{marginBottom:"100px"}}>
+    <div className="container mt-5" style={{marginBottom:"33%"}}>
      
       <div className="row">
         <div className="col-md-6">
@@ -118,9 +131,11 @@ const Billing = () => {
           </ul>
         </div>
         <div className="col-md-6">
-        <div class="alert alert-secondary" role="alert">
+      <div className="alert alert-secondary" role="alert">
+        <FaCalendarAlt /> {currentDateTime.toLocaleDateString()} <FaClock className='ml-2' /> {currentDateTime.toLocaleTimeString()}
+        <br />
         Bill Details
-</div>
+      </div>
       
           <ul className="list-group">
             {selectedProducts.map((product) => (
@@ -156,8 +171,14 @@ const Billing = () => {
             />
           </div>
           <button type="button" className="btn btn-success" onClick={handleSaveBilling}>
-            Save Billing
-          </button>
+          Save Billing
+        </button>
+  
+
+          <button type="button" className="btn btn-primary ml-2" onClick={() => window.print()}>
+          Print
+        </button>
+    
           {billingSuccess && (
             <div className="alert alert-success mt-3" role="alert">
               Billing saved successfully!

@@ -15,7 +15,7 @@ function BackgroundC() {
         className="background-image"
       />
       <div className="text-overlay">
-        <h1>Cafe - X - Application</h1>
+        <h1 style={{fontSize:"50px",fontWeight:"bold"}}>Coffee, Snacks and more..</h1>
       </div>
     </div>
   )

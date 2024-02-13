@@ -3,6 +3,7 @@ import { getDatabase, ref as databaseRef, onValue } from 'firebase/database';
 import { push } from 'firebase/database';
 import { toast, ToastContainer } from 'react-toastify';
 import OrderHistory from './OrderHistory';
+import Cookies from 'js-cookie';
 
 function Menu({ onAddToCart }) {
   const [products, setProducts] = useState([]);
@@ -21,6 +22,14 @@ function Menu({ onAddToCart }) {
   useEffect(() => {
     // Load products from Firebase Realtime Database
     const productsRef = databaseRef(db, 'CafeApplication/products');
+    let currentAccountValue = Cookies.get('currentAccount');
+    setCustomerDetails({
+      name: '',
+      phoneNumber: currentAccountValue,
+      address: '',
+      dineOption: 'Dine In',
+      paymentOption: 'Cash',
+    });
     onValue(productsRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
@@ -93,7 +102,8 @@ function Menu({ onAddToCart }) {
 
   return (
     <>
-      <div className="alert alert-secondary"  role="alert">
+    <div style={{marginBottom:"30%"}}>
+      <div className="alert alert-secondary"  role="alert" >
         <div className="d-flex justify-content-between align-items-center">
           <span>{showCart ? 'Cart' : 'Menu'}</span>
           <span
@@ -189,6 +199,7 @@ function Menu({ onAddToCart }) {
               <label htmlFor="phoneNumber">Phone Number:</label>
               <input
                 type="tel"
+                disabled
                 className="form-control"
                 id="phoneNumber"
                 value={customerDetails.phoneNumber}
@@ -243,7 +254,7 @@ function Menu({ onAddToCart }) {
           </div>
         )}
       </div>
-
+      </div>
   
     </>
   );

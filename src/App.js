@@ -16,6 +16,9 @@ import GiveFeedback from './components/CustomerFeedback';
 import OrderHistory from './components/OrderHistory';
 import FeedbackViewer from './components/FeedbackViewer ';
 import AllOrder from './components/AllOrder';
+import Aboutus from './components/Aboutus';
+import Contactus from './components/ContactUs';
+import CustomerOffers from './components/CustomerOffers';
 
 function App() {
 
@@ -53,12 +56,17 @@ function App() {
         <Route exact path="/admin-billings" element={<Billing></Billing>} />
         <Route exact path="/admin-feedback-view" element={<FeedbackViewer></FeedbackViewer>} />
         <Route exact path="/admin-orders" element={<AllOrder></AllOrder>} />
+        <Route path="/about" element={<Aboutus></Aboutus>} />
+        <Route path="/contact" element={<Contactus></Contactus>} />
         </>:
         <>
         <Route exact path="/" element={<CustomerHome></CustomerHome>} />
         <Route exact path="/customer-menu" element={<Menu></Menu>} />
+        <Route exact path="/customer-offers" element={<CustomerOffers></CustomerOffers>} />
         <Route exact path="/customer-feedback" element={<GiveFeedback></GiveFeedback>} />
         <Route exact path="/customer-order-history" element={<OrderHistory phoneNumber = {currentAccount}></OrderHistory>} />
+        <Route path="/about" element={<Aboutus></Aboutus>} />
+        <Route path="/contact" element={<Contactus></Contactus>} />
         </>}
         <Route exact path="/" element={<BackgroundC></BackgroundC>} />
         </>
@@ -66,6 +74,8 @@ function App() {
         <>
           <Route exact path="/" element={<BackgroundC></BackgroundC>} />
           <Route path="*" element={<BackgroundC></BackgroundC>} />
+          <Route path="/about" element={<Aboutus></Aboutus>} />
+          <Route path="/contact" element={<Contactus></Contactus>} />
         </>
       )}
     </Routes>

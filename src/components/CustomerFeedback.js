@@ -67,9 +67,9 @@ const GiveFeedback = () => {
     <div class="alert alert-secondary" role="alert">
     Give Feedback
 </div>
-    <div className="container mt-5 shadow-sm p-3 mb-5 bg-white rounded">
+    <div className="container mt-5 shadow-sm p-3 mb-5 bg-white rounded" >
       
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{marginBottom:"30%"}}>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input

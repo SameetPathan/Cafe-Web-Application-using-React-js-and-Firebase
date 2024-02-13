@@ -1,13 +1,16 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import { register } from "../firebaseConfig";
 import { toast, ToastContainer } from 'react-toastify';
 import { getDatabase, ref, set, get } from "firebase/database";
 import Cookies from 'js-cookie';
 import 'react-toastify/dist/ReactToastify.css';
+import { FaUser, FaSignOutAlt, FaSignInAlt, FaUserPlus, FaInfoCircle, FaPhone,FaHome  } from 'react-icons/fa';
+import { BrowserRouter as Router, Routes, Route,Link } from "react-router-dom";
+import { FaClock, FaCalendarAlt } from 'react-icons/fa';
 
 function Navbar(props) {
 
-
+  const [currentDateTime, setCurrentDateTime] = useState(new Date());
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -36,6 +39,7 @@ function Navbar(props) {
       phoneNumber.length !== 10 
     ) {
       setErrorMessage('Phone Number must be 10 digit.');
+      toast.error('Phone Number must be 10 digit.')
       return;
     }
 
@@ -44,6 +48,7 @@ function Navbar(props) {
       username.trim() === ''
     ) {
       setErrorMessage('Username must not be empty.');
+      toast.error('Username must not be empty.')
       return;
     }
 
@@ -53,6 +58,7 @@ function Navbar(props) {
       password.length < 6 
     ) {
       setErrorMessage('Password must be at least 6 characters long.');
+      toast.error('Password must be at least 6 characters long.')
       return;
     }
 
@@ -155,57 +161,86 @@ function Navbar(props) {
 
   }
 
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentDateTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const selectedProducts = []; // Replace this with your actual array of selected products
+  const totalSum = selectedProducts.reduce((sum, product) => sum + product.price, 0);
+
   return (
     <>
-      <nav class="navbar navbar-expand-lg navbar-dark" style={{backgroundColor:"#051922"}}>
-        <a class="navbar-brand mr-5" href="#">
-          CAFE - X
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarScroll"
-          aria-controls="navbarScroll"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarScroll">
-          <ul
-            class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll"
-            style={{ maxHeight: "100px" }}
-          >
-            <li class="nav-item active">
-              <a class="nav-link ml-5" href="#">
-                Home <span class="sr-only">(current)</span>
-              </a>
-            </li>
-          
-          </ul>
-          {props.loggedStatus ? <><button
-            class="btn btn-outline-danger m-1"
-            data-toggle="modal"
+    <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "#051922" }}>
+    <a className="navbar-brand mr-5" href="#">
+      TWO CUPS CAFE & RESTO
+    </a>
+    <button
+      className="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarScroll"
+      aria-controls="navbarScroll"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span className="navbar-toggler-icon"></span>
+    </button>
+    <div className="collapse navbar-collapse" id="navbarScroll">
+      <ul
+        className="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll"
+        style={{ maxHeight: "100px" }}
+      >
+       
+        
+      </ul>
+      <>
+
+      <Link className="badge badge-light m-1" to="/" style={{fontSize:"13px"}}>
+      Home <FaHome />
+    </Link>
+
+      <Link className="badge badge-light m-1" to="/about" style={{fontSize:"13px"}}>
+      About Us <FaInfoCircle />
+    </Link>
+
+ 
+    <Link className="badge badge-light m-1" to="/contact" style={{fontSize:"13px"}}>
+      Contact Us <FaPhone />
+    </Link>
+      </>
+      {props.loggedStatus ? (
+        <>
+
+      
+         
+       
+          <button
+            className="btn btn-outline-danger m-1"
             onClick={logout}
-           
           >
-            Logout
-          </button></>:<><button
-            class="btn btn-outline-success m-1"
+            Logout <FaSignOutAlt />
+          </button>
+        </>
+      ) : (
+        <>
+          <button
+            className="btn btn-outline-success m-1"
             data-toggle="modal"
             data-target="#exampleModal"
-           
           >
-            Login
+            Login <FaSignInAlt />
           </button>
-          <button class="btn btn-outline-success m-1" data-toggle="modal"
-          data-target="#exampleModal2">
-            Register
-          </button></>}
-          
-        </div>
-      </nav>
+          <button className="btn btn-outline-success m-1" data-toggle="modal" data-target="#exampleModal2">
+            Register <FaUserPlus />
+          </button>
+        </>
+      )}
+    </div>
+  </nav>
 
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
