@@ -6,6 +6,16 @@ import { ThreeDots } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
 
 function AdminHome() {
+  const backgroundImageStyle = {
+    backgroundImage: `url('bg2.jpg')`,  
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    width: '100%', 
+          height:"730px",
+          objectFit: 'cover', 
+    opacity: 0.8,
+  };
   const navigate = useNavigate();
   const [isLoading1, setIsLoading1] = useState(false);
   const [isLoading2, setIsLoading2] = useState(false);
@@ -52,7 +62,7 @@ function AdminHome() {
   };
 
   return (
-    <>
+    <div style={backgroundImageStyle}>
       <div className="alert alert-secondary" role="alert">
         Admin Dashboard
       </div>
@@ -107,7 +117,7 @@ function AdminHome() {
           </animated.div>
         </div>
       </div>
-    </>
+      </div>
   );
 }
 

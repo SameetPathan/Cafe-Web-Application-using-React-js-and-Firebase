@@ -22,6 +22,14 @@ import CustomerOffers from './components/CustomerOffers';
 
 function App() {
 
+  const backgroundImageStyle = {
+    backgroundImage: `url('tea.png')`,  
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    opacity: 0.8,
+  };
+
   const [loggedStatus, setLoggedStatus] = useState(true);
   const [isAdmin,setisAdmin] = useState(false);
   const [currentAccount, setCurrentAccount] = useState("");
@@ -45,6 +53,7 @@ function App() {
   },[currentAccount,loggedStatus]);
   
   return (
+
     <Router>
     <Navbar isAdmin={isAdmin} setisAdmin={setisAdmin} setLoggedStatus={setLoggedStatus} loggedStatus={loggedStatus} setCurrentAccount={setCurrentAccount} currentAccount={currentAccount}/>
     <Routes>
@@ -82,6 +91,7 @@ function App() {
     <Footer></Footer>
     <ToastContainer />
   </Router>
+  
   );
 }
 

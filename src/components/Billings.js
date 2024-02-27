@@ -14,6 +14,14 @@ const Billing = () => {
   const [billingSuccess, setBillingSuccess] = useState(false);
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
 
+  const handlePrint = () => {
+    const printContent = document.getElementById('print');
+    const originalContent = document.body.innerHTML;
+    document.body.innerHTML = printContent.innerHTML;
+    window.print();
+    document.body.innerHTML = originalContent;
+  };
+
   const db = getDatabase();
 
   useEffect(() => {
@@ -76,7 +84,7 @@ const Billing = () => {
   });
     setTimeout(() => {
       setBillingSuccess(false);
-    }, 9000);
+    }, 19000);
   };
 
 
@@ -118,7 +126,7 @@ const Billing = () => {
                 key={product.id}
                 className="list-group-item d-flex justify-content-between align-items-center"
               >
-                {product.name} - ${product.price}
+                {product.name} - ₹ {product.price}
                 <button
                   type="button"
                   className="btn btn-success btn-sm"
@@ -130,7 +138,11 @@ const Billing = () => {
             ))}
           </ul>
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6" id="print">
+        <a className="navbar-brand mr-5" href="#" style={{ fontSize: "30px", fontFamily: "cursive" }}>
+          <img src="android-chrome-512x512.png" alt="Two Cups Cafe & Resto Logo" height={40} style={{ marginRight: "10px" }} />
+        TWO CUPS CAFE & RESTO
+      </a>
       <div className="alert alert-secondary" role="alert">
         <FaCalendarAlt /> {currentDateTime.toLocaleDateString()} <FaClock className='ml-2' /> {currentDateTime.toLocaleTimeString()}
         <br />
@@ -148,7 +160,7 @@ const Billing = () => {
             ))}
           </ul>
           <div className="mt-3">
-            <strong>Total Sum: {totalSum.toFixed(2)}</strong>
+            <strong>Total Bill: ₹ {totalSum.toFixed(2)}</strong>
           </div>
           <div className="form-group mt-3">
             <label htmlFor="customerName">Customer Name:</label>
@@ -170,12 +182,13 @@ const Billing = () => {
               onChange={(e) => setCustomerNumber(e.target.value)}
             />
           </div>
+          
           <button type="button" className="btn btn-success" onClick={handleSaveBilling}>
           Save Billing
         </button>
   
 
-          <button type="button" className="btn btn-primary ml-2" onClick={() => window.print()}>
+          <button type="button" className="btn btn-primary ml-2" onClick={() => handlePrint()}>
           Print
         </button>
     

@@ -11,6 +11,7 @@ const ProductManagement = () => {
   const [productImage, setProductImage] = useState(null);
   const [products, setProducts] = useState([]);
   const [selectedProductId, setSelectedProductId] = useState(null);
+  const [productOffer, setProductOffer] = useState('');
 
   const db = getDatabase();
   const storage = getStorage();
@@ -53,6 +54,7 @@ const handleAddProduct = async () => {
       description: productDescription,
       price: productPrice,
       imageUrl,
+      offer: productOffer,
     };
     push(productsReference, newProduct);
 
@@ -76,6 +78,7 @@ const handleAddProduct = async () => {
       name: productName,
       description: productDescription,
       price: productPrice,
+      offer: productOffer
     };
     update(productRef, updatedProduct);
 
@@ -137,6 +140,17 @@ const handleAddProduct = async () => {
                 onChange={(e) => setProductPrice(e.target.value)}
               />
             </div>
+            <div className="form-group">
+    <label htmlFor="productOffer">Product Offer:</label>
+    <input
+      type="text"
+      className="form-control"
+      id="productOffer"
+      value={productOffer}
+      onChange={(e) => setProductOffer(e.target.value)}
+    />
+  </div>
+
             <div className="form-group">
               <label htmlFor="productImage">Product Image:</label>
               <input

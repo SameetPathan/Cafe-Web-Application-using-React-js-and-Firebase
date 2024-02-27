@@ -175,9 +175,10 @@ function Navbar(props) {
   return (
     <>
     <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "#051922" }}>
-    <a className="navbar-brand mr-5" href="#">
-      TWO CUPS CAFE & RESTO
-    </a>
+    <a className="navbar-brand mr-5" href="#" style={{ fontSize: "30px", fontFamily: "cursive" }}>
+    <img src="android-chrome-512x512.png" alt="Two Cups Cafe & Resto Logo" height={40} style={{ marginRight: "10px" }} />
+  TWO CUPS CAFE & RESTO
+</a>
     <button
       className="navbar-toggler"
       type="button"
@@ -199,16 +200,16 @@ function Navbar(props) {
       </ul>
       <>
 
-      <Link className="badge badge-light m-1" to="/" style={{fontSize:"13px"}}>
+      <Link className="mr-4 m-1" to="/" style={{fontSize:"16px" ,color:"white"}}>
       Home <FaHome />
     </Link>
 
-      <Link className="badge badge-light m-1" to="/about" style={{fontSize:"13px"}}>
+      <Link className="mr-4 m-1" to="/about" style={{fontSize:"16px" ,color:"white"}}>
       About Us <FaInfoCircle />
     </Link>
 
  
-    <Link className="badge badge-light m-1" to="/contact" style={{fontSize:"13px"}}>
+    <Link className="m-1 mr-4" to="/contact" style={{fontSize:"16px" ,color:"white"}}>
       Contact Us <FaPhone />
     </Link>
       </>
