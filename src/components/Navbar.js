@@ -4,7 +4,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import { getDatabase, ref, set, get } from "firebase/database";
 import Cookies from 'js-cookie';
 import 'react-toastify/dist/ReactToastify.css';
-import { FaUser, FaSignOutAlt, FaSignInAlt, FaUserPlus, FaInfoCircle, FaPhone,FaHome  } from 'react-icons/fa';
+import { FaUser, FaSignOutAlt, FaSignInAlt, FaUserPlus, FaInfoCircle, FaPhone,FaHome,FaPercent  } from 'react-icons/fa';
 import { BrowserRouter as Router, Routes, Route,Link } from "react-router-dom";
 import { FaClock, FaCalendarAlt } from 'react-icons/fa';
 
@@ -175,9 +175,9 @@ function Navbar(props) {
   return (
     <>
     <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "#051922" }}>
-    <a className="navbar-brand mr-5" href="#" style={{ fontSize: "30px", fontFamily: "cursive" }}>
+    <a className="navbar-brand mr-5" href="#" style={{ fontSize: "30px", fontFamily: "avaler-kursive" }}>
     <img src="android-chrome-512x512.png" alt="Two Cups Cafe & Resto Logo" height={40} style={{ marginRight: "10px" }} />
-  TWO CUPS CAFE & RESTO
+  Two<span style={{color:"rgb(150, 107, 58)"}}>Cups</span>  <span style={{fontSize:"16px"}}>Cafe and Restro</span> 
 </a>
     <button
       className="navbar-toggler"
@@ -212,6 +212,11 @@ function Navbar(props) {
     <Link className="m-1 mr-4" to="/contact" style={{fontSize:"16px" ,color:"white"}}>
       Contact Us <FaPhone />
     </Link>
+
+    <Link className="m-1 mr-4" to="/offers" style={{fontSize:"16px" ,color:"white"}}>
+      Offers   <FaPercent />
+    </Link>
+
       </>
       {props.loggedStatus ? (
         <>

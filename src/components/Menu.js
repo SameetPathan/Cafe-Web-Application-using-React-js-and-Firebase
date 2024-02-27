@@ -245,7 +245,7 @@ function Menu({ onAddToCart }) {
               }
             >
               <option value="Dine In">Dine In</option>
-              <option value="Dine Out">Dine Out</option>
+              <option value="Dine Out">Takeaway</option>
             </select>
           </div>
           <div className="form-group">

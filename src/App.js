@@ -84,6 +84,7 @@ function App() {
           <Route exact path="/" element={<BackgroundC></BackgroundC>} />
           <Route path="*" element={<BackgroundC></BackgroundC>} />
           <Route path="/about" element={<Aboutus></Aboutus>} />
+          <Route exact path="/offers" element={<CustomerOffers></CustomerOffers>} />
           <Route path="/contact" element={<Contactus></Contactus>} />
         </>
       )}
