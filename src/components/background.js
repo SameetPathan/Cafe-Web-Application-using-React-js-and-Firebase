@@ -20,12 +20,12 @@ function BackgroundC() {
         padding: '20px',
         boxSizing: 'border-box',
         }}>
-        <h1 style={{ fontSize: "50px", fontWeight: "bold", fontFamily:"cursive" }}>
+        <h5 style={{ fontSize: "50px", fontWeight: "bold", fontFamily:"cursive" }}>
             Good Coffee will always find the audience !
-        </h1>
-        <h1 style={{ fontSize: "50px", fontWeight: "bold", fontFamily: "cursive" }}>
+        </h5>
+        <h5 style={{ fontSize: "50px", fontWeight: "bold", fontFamily: "cursive" }}>
             We provide a variety of unique and best coffees.
-        </h1>
+        </h5>
     </div>
     
     
