@@ -18,6 +18,8 @@ function BackgroundC() {
         background: 'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))',
         color: 'white',
         padding: '20px',
+        marginTop:"10px",
+        width:"600px",
         boxSizing: 'border-box',
         }}>
         <h5 style={{ fontSize: "50px", fontWeight: "bold", fontFamily:"avaler-kursive" }}>
