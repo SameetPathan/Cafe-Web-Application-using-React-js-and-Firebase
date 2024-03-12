@@ -62,49 +62,50 @@ function Contactus() {
           </h2>
 
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleChange}
-              style={{ width: '100%', padding: '10px', margin: '10px 0', borderRadius: '5px' }}
-            />
-            <span style={{ color: 'red', marginBottom: '10px' }}>{formErrors.name}</span>
+          
+  <input
+    type="text"
+    name="name"
+    placeholder="Your Name"
+    value={formData.name}
+    onChange={handleChange}
+    style={{ width: '100%', padding: '10px', margin: '10px 0', borderRadius: '5px', backgroundColor: 'transparent', color: '#fff' }}
+  />
+  <span style={{ color: 'red', marginBottom: '10px' }}>{formErrors.name}</span>
 
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={handleChange}
-              style={{ width: '100%', padding: '10px', margin: '10px 0', borderRadius: '5px' }}
-            />
-            <span style={{ color: 'red', marginBottom: '10px' }}>{formErrors.email}</span>
+  <input
+    type="email"
+    name="email"
+    placeholder="Your Email"
+    value={formData.email}
+    onChange={handleChange}
+    style={{ width: '100%', padding: '10px', margin: '10px 0', borderRadius: '5px', backgroundColor: 'transparent', color: '#fff' }}
+  />
+  <span style={{ color: 'red', marginBottom: '10px' }}>{formErrors.email}</span>
 
-            <input
-              type="tel"
-              name="phoneNumber"
-              placeholder="Your Phone Number"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-              style={{ width: '100%', padding: '10px', margin: '10px 0', borderRadius: '5px' }}
-            />
-            <span style={{ color: 'red', marginBottom: '10px' }}>{formErrors.phoneNumber}</span>
+  <input
+    type="tel"
+    name="phoneNumber"
+    placeholder="Your Phone Number"
+    value={formData.phoneNumber}
+    onChange={handleChange}
+    style={{ width: '100%', padding: '10px', margin: '10px 0', borderRadius: '5px', backgroundColor: 'transparent', color: '#fff' }}
+  />
+  <span style={{ color: 'red', marginBottom: '10px' }}>{formErrors.phoneNumber}</span>
 
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              value={formData.message}
-              onChange={handleChange}
-              style={{ width: '100%', padding: '10px', margin: '10px 0', borderRadius: '5px' }}
-            />
-            <span style={{ color: 'red', marginBottom: '10px' }}>{formErrors.message}</span>
+  <textarea
+    name="message"
+    placeholder="Your Message"
+    value={formData.message}
+    onChange={handleChange}
+    style={{ width: '100%', padding: '10px', margin: '10px 0', borderRadius: '5px', backgroundColor: 'transparent', color: '#fff' }}
+  />
+  <span style={{ color: 'red', marginBottom: '10px' }}>{formErrors.message}</span>
 
-            <button type="submit" style={{ background: '#4CAF50', color: '#fff', padding: '10px 20px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
-              Submit
-            </button>
-          </form>
+  <button type="submit" style={{ background: '#4CAF50', color: '#fff', padding: '10px 20px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
+    Submit
+  </button>
+</form>
 
           <div style={{ marginTop: '20px', color: '#fff' }}>
             <p>Email: example@email.com</p>
